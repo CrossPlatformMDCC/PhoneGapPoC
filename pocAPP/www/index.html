@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <title>Hello World</title>
+</head>
+<body>
+    <div class="app">
+        <h1>PocApp</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        <!-- Botões -->
+        <div>
+            <button id="btnPhoto" onclick="takePicture();">TAKE PICTURE</button>
+        </div>
+        <!-- Camera -->
+        <div>
+            <b>Image: <span id="nImage"> </span> </b>
+            <img style="display:none;width:309px;height:550px;" id="camera_image" src="" align="middle" />
+        </div>
+
+        <button onclick="reset();" id="reset">USE PHOTO</button>
+        <!-- <canvas id="myCanvas"></canvas> -->
+
+        <button onclick="grayscaleImage();" id="grayscale">MONO</button>
+        <button onclick="processSepia();" id="sepia">SEPIA</button>
+        <button onclick="invertColors();" id="invertcolors">INVERT</button>
+
+        <button id="btnShare" onclick="shareLocation();">G+ LOCATION</button>
+        <button onclick="window.plugins.socialsharing.share('Compartilhar foto <3', null, canvas.toDataURL(), null)" id="btnImg">G+ SHARE</button>
+
+        <form method="post" enctype="multipart/form-data" action="http://loccam.great.ufc.br/downloadFiles/upload/recebeUpload.php">
+            Selecione uma imagem: <input name="arquivo" type="file" />
+            <br />
+            <input type="submit" value="SEND" />
+        </form>
+
+ </div>
+ <script type="text/javascript" src="cordova.js"></script>
+ <script type="text/javascript" src="js/index.js"></script>
+ <script type="text/javascript">
+    app.initialize();
+
+    canvas = document.createElement('canvas');
+    canvas.setAttribute('id','myCanvas');
+</script>
+</body>
+</html>
